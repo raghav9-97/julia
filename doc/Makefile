@@ -20,7 +20,8 @@ help:
 	@echo "To fix outdated doctests, use 'make <target> doctest=fix'"
 
 
-DOCUMENTER_OPTIONS := linkcheck=$(linkcheck) doctest=$(doctest) buildroot=$(call cygpath_w,$(BUILDROOT))
+DOCUMENTER_OPTIONS := linkcheck=$(linkcheck) doctest=$(doctest) buildroot=$(call cygpath_w,$(BUILDROOT)) \
+    texengine=$(texengine)
 
 UnicodeData.txt:
 	$(JLDOWNLOAD) http://www.unicode.org/Public/9.0.0/ucd/UnicodeData.txt
@@ -40,7 +41,7 @@ html: deps
 
 pdf: deps
 	@echo "Building PDF documentation."
-	$(JULIA_EXECUTABLE) --color=yes $(call cygpath_w,$(SRCDIR)/make.jl) -- pdf $(DOCUMENTER_OPTIONS)
+	$(JULIA_EXECUTABLE) --color=yes $(call cygpath_w,$(SRCDIR)/make.jl) -- pdf --verbose $(DOCUMENTER_OPTIONS)
 	@echo "Build finished."
 
 # The deploy target should only be called in Travis builds
