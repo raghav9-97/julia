@@ -7,6 +7,8 @@ New language features
   * An *exception stack* is maintained on each task to make exception handling more robust and enable root cause analysis using `catch_stack` ([#28878]).
   * The experimental macro `Base.@locals` returns a dictionary of current local variable names
     and values ([#29733]).
+  * The `extrema` function now accepts a function argument in the same manner as `minimum` and
+    `maximum` ([#30323]).
 
 Language changes
 ----------------
